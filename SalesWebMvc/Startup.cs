@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using SalesWebMvc.Services;
 using SalesWebMvc.Data;
 
 namespace SalesWebMvc
@@ -34,6 +35,7 @@ namespace SalesWebMvc
             });
 
             services.AddScoped<SeedingService>();
+            services.AddScoped<SellerService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
