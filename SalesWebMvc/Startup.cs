@@ -34,8 +34,7 @@ namespace SalesWebMvc
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddScoped<SeedingService>();
-            services.AddScoped<SellerService>();
+            
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
@@ -45,6 +44,9 @@ namespace SalesWebMvc
                     options.UseMySql(Configuration.GetConnectionString("SalesWebMvcContext"), builder => 
                     builder.MigrationsAssembly("SalesWebMvc"))); //>>MySql Database<<
 
+            services.AddScoped<SeedingService>();
+            services.AddScoped<SellerService>();
+            services.AddScoped<DepartmentService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
