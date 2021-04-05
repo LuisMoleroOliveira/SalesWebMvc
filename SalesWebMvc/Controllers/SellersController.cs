@@ -38,5 +38,27 @@ namespace SalesWebMvc.Controllers
             // return RedirectToAction("Index");
             return RedirectToAction(nameof(Index)); // forma anterior também serve porém dessa forma o nome altera se alterar o nome do metodo
         }
+        public IActionResult Delete(int? id)
+        {
+            if(id == null)
+            {
+                return NotFound();
+            }
+            var obj = _sellerService.FyndById(id.Value);
+
+            if(obj == null)
+            {
+                return NotFound();
+
+            }
+            return View(obj);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(int id)
+        {
+            _sellerService.Remove(id);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
